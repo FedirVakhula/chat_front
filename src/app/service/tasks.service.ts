@@ -23,42 +23,42 @@ export class TasksService {
   }
 
   public getTasks () {
-    return this.http.get('http://localhost:5000/coments');
+    return this.http.get('/coments');
   }
 
   public setTasks (task: ITask): void {
-    this.http.post('http://localhost:5000/coments/add', task)
+    this.http.post('/coments/add', task)
       .subscribe((tasks) => {
         this.tasks$.next(tasks);
       });
   }
 
   public upDateTask(id: string, body: ITask): void {
-    this.http.patch(`http://localhost:5000/coments/${id}`, body).subscribe((tasks) => {
+    this.http.patch(`/coments/${id}`, body).subscribe((tasks) => {
       this.tasks$.next(tasks);
     });
   }
 
   public upDateMessage(id: string, body: ITask): void {
-    this.http.patch(`http://localhost:5000/coments/add/${id}`, body).subscribe((tasks) => {
+    this.http.patch(`/coments/add/${id}`, body).subscribe((tasks) => {
       this.tasks$.next(tasks);
     });
   }
 
   public upDateLike(id: string, body: ITask): void {
-    this.http.patch(`http://localhost:5000/coments/like/${id}`, body).subscribe((tasks) => {
+    this.http.patch(`/coments/like/${id}`, body).subscribe((tasks) => {
       this.tasks$.next(tasks);
     });
   }
 
   public upDateDislike(id: string, body: ITask): void {
-    this.http.patch(`http://localhost:5000/coments/dislike/${id}`, body).subscribe((tasks) => {
+    this.http.patch(`/coments/dislike/${id}`, body).subscribe((tasks) => {
       this.tasks$.next(tasks);
     });
   }
 
   public deleteTask(id: string): void {
-    this.http.delete(`http://localhost:5000/coments/${id}`).subscribe((tasks) => {
+    this.http.delete(`/coments/${id}`).subscribe((tasks) => {
         this.tasks$.next(tasks);
     });
   }

@@ -1,0 +1,14 @@
+{
+  "/coments": {
+    "target": "https://dry-island-39107.herokuapp.com/",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin": true
+  },
+  "/coments/*": {
+    "target": "https://dry-island-39107.herokuapp.com/",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin": true
+  }
+}

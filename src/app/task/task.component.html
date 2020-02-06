@@ -1,0 +1,35 @@
+<div class="container-task">
+  <div class="task-title" >
+    <div class="task-name" (click)="sendId($event)">
+      <textarea cols="30" rows="6" [disabled]="show" #item>{{task.name}}</textarea>
+      <span>{{ task.comments.length }}</span>
+    </div>
+    <div class="like">
+      <span>{{task.like}}</span>
+      <i class="material-icons" (click)="onLike()">
+        thumb_up
+      </i>
+      <i class="material-icons" (click)="onDislike()">
+        thumb_down
+      </i>
+      <span>{{task.dislike}}</span>
+      <span>
+        author:{{task.author}}
+      </span>
+      <span>Date:{{task.date | date:"dd/MM/yy"}}</span>
+    </div>
+  </div>
+  <div class="task-delete">
+    <div>
+      <div *ngIf="show">
+        <button (click)="editTask()">Edit</button>
+      </div>
+      <div *ngIf="!show">
+        <button (click)="onSave(item.value)">Save</button>
+      </div>
+    </div>
+    <div>
+      <button (click)="deleteTask()">Delete</button>
+    </div>
+  </div>
+</div>

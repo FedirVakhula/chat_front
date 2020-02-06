@@ -1,0 +1,25 @@
+<div class="container-comments">
+  <div class="title-messege">
+    <h1>Comment:{{messageTask.name}}</h1>
+  </div>
+  <div *ngIf="messageTask" class="container-task">
+    <div class="container-message" *ngFor="let message of messageTask.comments">
+      <div class="picture">
+      </div>
+      <div class="message">
+        <p>{{message}}</p>
+      </div>
+    </div>
+  </div>
+  
+  <div class="container-send-message">
+    <div class="send-picture">
+      <img src="" alt="">
+    </div>
+    <div class="message">
+      <textarea #message name="inputMessage" id="inputMessage" cols="60" rows="6"
+      placeholder="type text and press CTRL+ENTER"
+        (keydown.control.Enter)="addMessage(message.value); message.value=''"></textarea>
+    </div>
+  </div>
+</div>

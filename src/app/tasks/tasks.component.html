@@ -1,0 +1,30 @@
+<div class="item-container">
+  <div class="input-container">
+    <h1>Comment</h1>
+    <div class="input-text">
+      <div class="input-text-container">
+        <input type="text" placeholder="Type comment here..." (keyup)="0" #input>
+        <input type="text" placeholder="Type author name here..." (keyup)="0" #inputauthor>
+      </div>
+      <button class="add-new" 
+        (click)="addTask(input.value, inputauthor.value); input.value=''; inputauthor.value=''"
+        [disabled]="!input.value || !inputauthor.value"
+        [ngClass]="{'button-disable' : !input.value || !inputauthor.value}">Add new</button>
+    </div>
+    <div *ngIf="tasks.length">
+      <div *ngFor="let task of tasks">
+        <app-task 
+          [task]="task"
+          (delete)="onDelete($event)"
+          (save)="onSave($event)"
+          (idTask)="message($event)"
+          ></app-task>
+      </div>
+    </div>
+  </div>
+  <div class="comments-container" *ngIf="!!messageTask && !!tasks.length">
+    <app-comments
+      [messageTask]="messageTask"
+      ></app-comments>  
+  </div>
+</div>

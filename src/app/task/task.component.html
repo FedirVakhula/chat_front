@@ -1,6 +1,6 @@
 <div class="container-task">
   <div class="task-title" >
-    <div class="task-name" (click)="sendId($event)">
+    <div class="task-name" (click)="sendId()">
       <textarea cols="30" rows="6" [disabled]="show" #item>{{task.name}}</textarea>
       <span>{{ task.comments.length }}</span>
     </div>

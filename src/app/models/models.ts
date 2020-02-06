@@ -5,4 +5,5 @@ export interface ITask {
     comments: string[];
     like: number;
     dislike: number;
+    date?: Date;
 }

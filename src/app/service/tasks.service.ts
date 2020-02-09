@@ -23,42 +23,42 @@ export class TasksService {
   }
 
   public getTasks () {
-    return this.http.get('https://dry-island-39107.herokuapp.com/coments');
+    return this.http.get('https://radiant-reef-48325.herokuapp.com/coments');
   }
 
   public setTasks (task: ITask): void {
-    this.http.post('https://dry-island-39107.herokuapp.com/coments/add', task)
+    this.http.post('https://radiant-reef-48325.herokuapp.com/coments/add', task)
       .subscribe((tasks) => {
         this.tasks$.next(tasks);
       });
   }
 
   public upDateTask(id: string, body: any): void {
-    this.http.put(`http://dry-island-39107.herokuapp.com/coments/${id}`, body).subscribe((tasks) => {
+    this.http.put(`https://radiant-reef-48325.herokuapp.com/coments/${id}`, body).subscribe((tasks) => {
       this.tasks$.next(tasks);
     });
   }
 
   public upDateMessage(id: string, body: any): void {
-    this.http.put(`https://dry-island-39107.herokuapp.com/coments/add/${id}`, body).subscribe((tasks) => {
+    this.http.put(`https://radiant-reef-48325.herokuapp.com/coments/add/${id}`, body).subscribe((tasks) => {
       this.tasks$.next(tasks);
     });
   }
 
   public upDateLike(id: string, body: any): void {
-    this.http.put(`https://dry-island-39107.herokuapp.com/coments/like/${id}`, body).subscribe((tasks) => {
+    this.http.put(`https://radiant-reef-48325.herokuapp.com/coments/like/${id}`, body).subscribe((tasks) => {
       this.tasks$.next(tasks);
     });
   }
 
   public upDateDislike(id: string, body: any): void {
-    this.http.put(`https://dry-island-39107.herokuapp.com/coments/dislike/${id}`, body).subscribe((tasks) => {
+    this.http.put(`https://radiant-reef-48325.herokuapp.com/coments/dislike/${id}`, body).subscribe((tasks) => {
       this.tasks$.next(tasks);
     });
   }
 
   public deleteTask(id: string): void {
-    this.http.delete(`https://dry-island-39107.herokuapp.com/coments/${id}`).subscribe((tasks) => {
+    this.http.delete(`https://radiant-reef-48325.herokuapp.com/coments/${id}`).subscribe((tasks) => {
         this.tasks$.next(tasks);
     });
   }

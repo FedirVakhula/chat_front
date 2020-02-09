@@ -33,26 +33,26 @@ export class TasksService {
       });
   }
 
-  public upDateTask(id: string, body: ITask): void {
-    this.http.patch(`https://dry-island-39107.herokuapp.com/coments/${id}`, body).subscribe((tasks) => {
+  public upDateTask(id: string, body: any): void {
+    this.http.put(`http://dry-island-39107.herokuapp.com/coments/${id}`, body).subscribe((tasks) => {
       this.tasks$.next(tasks);
     });
   }
 
-  public upDateMessage(id: string, body: ITask): void {
-    this.http.patch(`https://dry-island-39107.herokuapp.com/coments/add/${id}`, body).subscribe((tasks) => {
+  public upDateMessage(id: string, body: any): void {
+    this.http.put(`https://dry-island-39107.herokuapp.com/coments/add/${id}`, body).subscribe((tasks) => {
       this.tasks$.next(tasks);
     });
   }
 
-  public upDateLike(id: string, body: ITask): void {
-    this.http.patch(`https://dry-island-39107.herokuapp.com/coments/like/${id}`, body).subscribe((tasks) => {
+  public upDateLike(id: string, body: any): void {
+    this.http.put(`https://dry-island-39107.herokuapp.com/coments/like/${id}`, body).subscribe((tasks) => {
       this.tasks$.next(tasks);
     });
   }
 
-  public upDateDislike(id: string, body: ITask): void {
-    this.http.patch(`https://dry-island-39107.herokuapp.com/coments/dislike/${id}`, body).subscribe((tasks) => {
+  public upDateDislike(id: string, body: any): void {
+    this.http.put(`https://dry-island-39107.herokuapp.com/coments/dislike/${id}`, body).subscribe((tasks) => {
       this.tasks$.next(tasks);
     });
   }
@@ -63,7 +63,7 @@ export class TasksService {
     });
   }
 
-  public getTask (id: number): Observable<ITask> {
+  public getTask (id: string): Observable<ITask> {
     return this.getTasks().pipe(map((tasks: ITask[]) => {
       return tasks.find((data: ITask) => data._id === id);
     }));

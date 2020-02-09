@@ -13,18 +13,11 @@
     </div>
     <div *ngIf="tasks.length">
       <div *ngFor="let task of tasks">
-        <app-task 
+        <app-task
+          [parentId]="task._id"
           [task]="task"
           (delete)="onDelete($event)"
-          (save)="onSave($event)"
-          (idTask)="message($event)"
-          ></app-task>
+          (save)="onSave($event)"></app-task>
       </div>
     </div>
-  </div>
-  <div class="comments-container" *ngIf="!!messageTask && !!tasks.length">
-    <app-comments
-      [messageTask]="messageTask"
-      ></app-comments>  
-  </div>
 </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
 import { ITask } from '../models/models';
 import { TasksService } from '../service/tasks.service';
 
@@ -9,11 +9,13 @@ import { TasksService } from '../service/tasks.service';
 })
 export class TaskComponent implements OnInit {
   public show = true;
+  public showInput = false;
 
   @Input() task: ITask;
+  @Input() parentId: string;
   @Output() delete: EventEmitter<ITask> = new EventEmitter<ITask>();
-  @Output() save: EventEmitter<ITask> = new EventEmitter<ITask>();
-  @Output() idTask: EventEmitter<number> = new EventEmitter<number>();
+
+  @ViewChild('inputComments') inputComments: ElementRef;
 
   constructor(private tasksService: TasksService) { }
 
@@ -30,19 +32,47 @@ export class TaskComponent implements OnInit {
 
   public onSave(value): void {
     this.task.name = value;
-    this.save.emit(this.task);
+    const body = {
+      parentId: this.parentId,
+      task: this.task
+    };
+    this.tasksService.upDateTask(this.task._id, body);
     this.show = true;
   }
 
-  public sendId (): void {
-    this.idTask.emit(this.task._id);
-  }
-
   public onLike(): void {
-    this.tasksService.upDateLike(this.task._id.toString(), this.task);
+    const body = {
+      parentId: this.parentId,
+      task: this.task
+    };
+    this.tasksService.upDateLike(this.task._id, body);
   }
 
   public onDislike(): void {
-    this.tasksService.upDateDislike(this.task._id.toString(), this.task);
+    const body = {
+      parentId: this.parentId,
+      task: this.task
+    };
+    this.tasksService.upDateDislike(this.task._id, body);
+  }
+
+  public addComments(): void {
+    this.showInput = true;
+  }
+
+  public saveComments(): void {
+    const task = {
+      name: this.inputComments.nativeElement.value,
+      comments: [],
+      like: 0,
+      dislike: 0
+    };
+    const body = {
+      parentId: this.parentId,
+      comment: task
+    };
+    this.inputComments.nativeElement.value = '';
+    this.showInput = false;
+    this.tasksService.upDateMessage(this.task._id, body);
   }
 }

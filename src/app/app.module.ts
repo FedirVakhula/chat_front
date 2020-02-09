@@ -6,7 +6,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { TaskComponent } from './task/task.component';
 import { TasksComponent } from './tasks/tasks.component';
-import { CommentsComponent } from './comments/comments.component';
 import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
@@ -14,7 +13,6 @@ import { FooterComponent } from './footer/footer.component';
     AppComponent,
     TaskComponent,
     TasksComponent,
-    CommentsComponent,
     FooterComponent
   ],
   imports: [

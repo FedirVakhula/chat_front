@@ -1,8 +1,8 @@
 export interface ITask {
-    _id?: number;
+    _id?: string;
     name: string;
-    author: string;
-    comments: string[];
+    author?: string;
+    comments: ITask[];
     like: number;
     dislike: number;
     date?: Date;

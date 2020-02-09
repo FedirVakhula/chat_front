@@ -10,7 +10,6 @@ import { Subscription } from 'rxjs';
 })
 export class TasksComponent implements OnInit, OnDestroy {
   public tasks: ITask[] = [];
-  public messageTask: ITask = null;
 
   private tasksSubscribtion: Subscription;
 
@@ -27,23 +26,17 @@ export class TasksComponent implements OnInit, OnDestroy {
   }
 
   public addTask(inputvalue: string, inputauthor: string): void {
-    const task = { name: inputvalue, author: inputauthor, comments: [], like: 0, dislike: 0};
+    const task: ITask = { name: inputvalue, author: inputauthor, comments: [], like: 0, dislike: 0};
     this.tasks.push(task);
     this.taskservice.setTasks(task);
   }
 
-  public onDelete(tasks): void {
-    this.taskservice.deleteTask(tasks._id);
-    this.messageTask = null;
+  public onDelete(task: ITask): void {
+    this.taskservice.deleteTask(task._id);
   }
 
   public onSave(task: ITask): void {
     this.taskservice.upDateTask(task._id.toString(), task);
   }
 
-  public message (id: number): void {
-    this.taskservice.getTask(id).subscribe((task: ITask) => {
-      this.messageTask = task;
-    });
-  }
 }
